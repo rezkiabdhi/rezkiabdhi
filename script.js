@@ -1,6 +1,8 @@
 const year = document.querySelector('#year');
 year.textContent = new Date().getFullYear();
 
+const snowIconSvg = '<svg class="snow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M4.93 6l14.14 12M19.07 6L4.93 18M9.5 4.5L12 7l2.5-2.5M9.5 19.5L12 17l2.5 2.5M4.5 9.5L7 12l-2.5 2.5M19.5 9.5L17 12l2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>';
+
 const translations = {
   id: {
     pageTitle: 'Abdhi Rezki — Personal Site',
@@ -9,7 +11,7 @@ const translations = {
     languageLabel: 'Ganti bahasa ke Inggris', brandLabel: 'Kembali ke atas',
     navigationLabel: 'Navigasi utama', focusLabel: 'Fokus: menggambar, bermain, menonton, belajar',
     sayHello: 'Sapa saya', imageLabel: 'TERUS INGIN TAHU / 01',
-    noteTop: '<span>✳</span> terbuka pada ide', schoolLabel: 'SMK 6<br />TANGSEL',
+    noteTop: `${snowIconSvg} terbuka pada ide`, schoolLabel: 'SMK 6<br />TANGSEL',
     tickerDraw: 'GAMBAR', tickerPlay: 'MAIN', tickerWatch: 'TONTON', tickerLearn: 'BELAJAR',
     heroEyebrow: 'Siswa · Tangerang Selatan',
     heroTitle: 'Belajar hari ini,<br /><em>membuat esok.</em>',
@@ -35,7 +37,7 @@ const translations = {
     motto: 'Konsisten<br /><em>di satu waktu.</em>', mottoCaption: 'motto hidup',
     contactIndex: '03 / KONTAK', contactEyebrow: 'Punya ide atau ingin menyapa?',
     contactTitle: 'Mari buat<br /><em>sesuatu yang baik.</em>',
-    footerMade: 'Dibuat dengan rasa ingin tahu <span class="footer-star">✳</span>', backToTop: 'Kembali ke atas ↑'
+    footerMade: 'Dibuat dengan rasa ingin tahu <span class="footer-star">❄</span>', backToTop: 'Kembali ke atas ↑'
   },
   en: {
     pageTitle: 'Abdhi Rezki — Personal Site',
@@ -44,7 +46,7 @@ const translations = {
     languageLabel: 'Switch language to Indonesian', brandLabel: 'Back to top',
     navigationLabel: 'Main navigation', focusLabel: 'Focus: drawing, gaming, films, and learning',
     sayHello: 'Say hello', imageLabel: 'STAY CURIOUS / 01',
-    noteTop: '<span>✳</span> open to ideas', schoolLabel: 'SMK 6<br />SOUTH TANGERANG',
+    noteTop: `${snowIconSvg} open to ideas`, schoolLabel: 'SMK 6<br />SOUTH TANGERANG',
     tickerDraw: 'DRAW', tickerPlay: 'PLAY', tickerWatch: 'WATCH', tickerLearn: 'LEARN',
     heroEyebrow: 'Student · South Tangerang',
     heroTitle: 'Learning today,<br /><em>shaping tomorrow.</em>',
@@ -70,7 +72,7 @@ const translations = {
     motto: 'Stay consistent,<br /><em>one moment at a time.</em>', mottoCaption: 'my life motto',
     contactIndex: '03 / CONTACT', contactEyebrow: 'Have an idea or just want to say hello?',
     contactTitle: "Let's make<br /><em>something good.</em>",
-    footerMade: 'Made with curiosity <span class="footer-star">✳</span>', backToTop: 'Back to top ↑'
+    footerMade: 'Made with curiosity <span class="footer-star">❄</span>', backToTop: 'Back to top ↑'
   }
 };
 
@@ -114,3 +116,127 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+// 3D Interactive Portrait Tilt with Idle Float
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const heroStage = document.querySelector('#heroStage');
+const tiltCard = document.querySelector('#tiltCard');
+
+if (heroStage && tiltCard && !prefersReducedMotion) {
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let isHovering = false;
+
+  heroStage.addEventListener('pointermove', (event) => {
+    const rect = heroStage.getBoundingClientRect();
+    const normX = (event.clientX - rect.left) / rect.width - 0.5;
+    const normY = (event.clientY - rect.top) / rect.height - 0.5;
+    targetY = normX * 16;
+    targetX = -normY * 14;
+    isHovering = true;
+
+    tiltCard.style.setProperty('--glare-x', `${(normX + 0.5) * 100}%`);
+    tiltCard.style.setProperty('--glare-y', `${(normY + 0.5) * 100}%`);
+  });
+
+  heroStage.addEventListener('pointerleave', () => {
+    isHovering = false;
+  });
+
+  function animateTilt(time) {
+    if (!isHovering) {
+      targetX = Math.sin(time * 0.0011) * 3.2;
+      targetY = Math.cos(time * 0.00085) * 4.2;
+    }
+    currentX += (targetX - currentX) * 0.08;
+    currentY += (targetY - currentY) * 0.08;
+    tiltCard.style.transform = `rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg)`;
+    requestAnimationFrame(animateTilt);
+  }
+
+  requestAnimationFrame(animateTilt);
+}
+
+// Delicate Atmospheric Snowfall
+const snowCanvas = document.querySelector('#snowCanvas');
+if (snowCanvas && !prefersReducedMotion) {
+  const ctx = snowCanvas.getContext('2d');
+  let width = 0;
+  let height = 0;
+  const flakeCount = 46;
+  const flakes = [];
+
+  function resizeSnow() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    snowCanvas.width = width * dpr;
+    snowCanvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function createFlake(startRandomY = false) {
+    const depth = Math.random();
+    return {
+      x: Math.random() * width,
+      y: startRandomY ? Math.random() * height : -12,
+      radius: 1.2 + depth * 2.4,
+      speedY: 0.35 + depth * 0.75,
+      drift: (Math.random() - 0.5) * 0.35,
+      phase: Math.random() * Math.PI * 2,
+      alpha: 0.25 + depth * 0.45,
+      isCrystal: depth > 0.76
+    };
+  }
+
+  resizeSnow();
+  for (let i = 0; i < flakeCount; i += 1) {
+    flakes.push(createFlake(true));
+  }
+  window.addEventListener('resize', resizeSnow);
+
+  function drawCrystal(x, y, r, alpha) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.strokeStyle = `rgba(142, 202, 255, ${alpha})`;
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 3; i += 1) {
+      ctx.rotate(Math.PI / 3);
+      ctx.beginPath();
+      ctx.moveTo(-r, 0);
+      ctx.lineTo(r, 0);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function renderSnow(time) {
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < flakes.length; i += 1) {
+      const f = flakes[i];
+      f.y += f.speedY;
+      f.x += f.drift + Math.sin(time * 0.0007 + f.phase) * 0.28;
+
+      if (f.y > height + 14) {
+        flakes[i] = createFlake(false);
+        continue;
+      }
+      if (f.x > width + 12) f.x = -12;
+      if (f.x < -12) f.x = width + 12;
+
+      if (f.isCrystal) {
+        drawCrystal(f.x, f.y, f.radius * 1.65, f.alpha);
+      } else {
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(142, 202, 255, ${f.alpha})`;
+        ctx.fill();
+      }
+    }
+    requestAnimationFrame(renderSnow);
+  }
+
+  requestAnimationFrame(renderSnow);
+}
