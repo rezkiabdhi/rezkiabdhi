@@ -221,6 +221,14 @@ if (heroStage && tiltCard && !prefersReducedMotion) {
   requestAnimationFrame(animateTilt);
 }
 
+// Interactive Voxel Cube Cluster Burst
+const voxelSculpture = document.querySelector('#voxelSculpture');
+if (voxelSculpture) {
+  voxelSculpture.addEventListener('click', () => {
+    voxelSculpture.classList.toggle('is-exploded');
+  });
+}
+
 // Delicate Atmospheric Snowfall
 const snowCanvas = document.querySelector('#snowCanvas');
 if (snowCanvas && !prefersReducedMotion) {

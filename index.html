@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Profil Abdhi Rezki, siswa SMK Negeri 6 Tangerang Selatan." />
     <title>Abdhi Rezki — Personal Site</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=portfolio-winter-20261126" />
+    <link rel="stylesheet" href="styles.css?v=voxel-winter-20261126" />
   </head>
   <body>
     <canvas id="snowCanvas" class="snow-canvas" aria-hidden="true"></canvas>
@@ -17,8 +18,13 @@
       <header class="site-header">
         <div class="header-left">
           <a class="brand" href="#top" aria-label="Kembali ke atas" data-i18n-aria="brandLabel">
-            <svg class="brand-triangle" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3L22 20H2L12 3Z" fill="currentColor" />
+            <svg class="brand-logo" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 3L27.5 9.6V22.4L16 29L4.5 22.4V9.6L16 3Z" fill="#0D2752"/>
+              <path d="M16 3L27.5 9.6L16 16.2L4.5 9.6L16 3Z" fill="#DBEAFE"/>
+              <path d="M4.5 9.6L16 16.2V29L4.5 22.4V9.6Z" fill="#2563EB"/>
+              <path d="M27.5 9.6L16 16.2V29L27.5 22.4V9.6Z" fill="#081A38"/>
+              <path d="M16 3L27.5 9.6V22.4L16 29L4.5 22.4V9.6L16 3Z" stroke="#8ECAFF" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M4.5 9.6L16 16.2L27.5 9.6M16 16.2V29" stroke="#8ECAFF" stroke-width="1.2" stroke-linejoin="round"/>
             </svg>
             <span>abdhi<span class="brand-dot">.</span></span>
           </a>
@@ -36,12 +42,33 @@
       </header>
 
       <section class="hero section-shell" id="top">
-        <div class="crystal-orbit" aria-hidden="true">
-          <div class="crystal-3d">
-            <span class="crystal-ring ring-a"></span>
-            <span class="crystal-ring ring-b"></span>
-            <span class="crystal-ring ring-c"></span>
-            <span class="crystal-core"></span>
+        <div class="voxel-sculpture" id="voxelSculpture" title="Klik untuk memisahkan voxel" aria-hidden="true">
+          <div class="voxel-cluster">
+            <div class="voxel v-core">
+              <span class="vf vf-front"></span><span class="vf vf-back"></span>
+              <span class="vf vf-right"></span><span class="vf vf-left"></span>
+              <span class="vf vf-top"></span><span class="vf vf-bottom"></span>
+            </div>
+            <div class="voxel v-sat v-1">
+              <span class="vf vf-front"></span><span class="vf vf-back"></span>
+              <span class="vf vf-right"></span><span class="vf vf-left"></span>
+              <span class="vf vf-top"></span><span class="vf vf-bottom"></span>
+            </div>
+            <div class="voxel v-sat v-2">
+              <span class="vf vf-front"></span><span class="vf vf-back"></span>
+              <span class="vf vf-right"></span><span class="vf vf-left"></span>
+              <span class="vf vf-top"></span><span class="vf vf-bottom"></span>
+            </div>
+            <div class="voxel v-sat v-3">
+              <span class="vf vf-front"></span><span class="vf vf-back"></span>
+              <span class="vf vf-right"></span><span class="vf vf-left"></span>
+              <span class="vf vf-top"></span><span class="vf vf-bottom"></span>
+            </div>
+            <div class="voxel v-sat v-4">
+              <span class="vf vf-front"></span><span class="vf vf-back"></span>
+              <span class="vf vf-right"></span><span class="vf vf-left"></span>
+              <span class="vf vf-top"></span><span class="vf vf-bottom"></span>
+            </div>
           </div>
         </div>
 
@@ -223,10 +250,10 @@
 
       <section class="manifesto section-shell">
         <div class="manifesto-ornament" aria-hidden="true">
-          <div class="crystal-3d crystal-sm">
-            <span class="crystal-ring ring-a"></span>
-            <span class="crystal-ring ring-b"></span>
-            <span class="crystal-core"></span>
+          <div class="voxel v-mini">
+            <span class="vf vf-front"></span><span class="vf vf-back"></span>
+            <span class="vf vf-right"></span><span class="vf vf-left"></span>
+            <span class="vf vf-top"></span><span class="vf vf-bottom"></span>
           </div>
         </div>
         <p class="manifesto-mark">“</p>

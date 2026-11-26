@@ -98,10 +98,15 @@ a {
   color: var(--ink-light);
 }
 
-.brand-triangle {
-  width: 15px;
-  height: 15px;
-  color: var(--ink-light);
+.brand-logo {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.brand:hover .brand-logo {
+  transform: rotate(-8deg) scale(1.06);
 }
 
 .brand-dot {
@@ -495,75 +500,106 @@ h2 em,
   color: var(--ink-light);
 }
 
-/* 3D Geometric Crystal Ornament */
-.crystal-orbit {
+/* Creative 3D Voxel Cube Sculpture */
+.voxel-sculpture {
   position: absolute;
-  top: 42px;
+  top: 46px;
   right: 7vw;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.55;
+  width: 120px;
+  height: 120px;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+  z-index: 3;
+  cursor: pointer;
 }
 
-.crystal-3d {
+.voxel-cluster {
   position: relative;
-  width: 88px;
-  height: 88px;
+  width: 44px;
+  height: 44px;
   transform-style: preserve-3d;
-  animation: crystalSpin 18s linear infinite;
+  animation: voxelSpin 20s linear infinite;
 }
 
-.crystal-3d.crystal-sm {
-  width: 56px;
-  height: 56px;
-}
-
-.crystal-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(142, 202, 255, 0.48);
-}
-
-.manifesto .crystal-ring {
-  border-color: rgba(29, 78, 216, 0.35);
-}
-
-.crystal-ring.ring-a {
-  transform: rotateY(0deg) rotateX(65deg);
-}
-
-.crystal-ring.ring-b {
-  transform: rotateY(60deg) rotateX(65deg);
-}
-
-.crystal-ring.ring-c {
-  transform: rotateY(120deg) rotateX(65deg);
-}
-
-.crystal-core {
+.voxel {
+  --s: 44px;
+  --half: 22px;
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
-  background: var(--accent-ice);
-  transform: rotate(45deg);
-  box-shadow: 0 0 16px rgba(142, 202, 255, 0.85);
+  width: var(--s);
+  height: var(--s);
+  margin: calc(var(--half) * -1) 0 0 calc(var(--half) * -1);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.manifesto .crystal-core {
-  background: var(--accent);
-  box-shadow: 0 0 12px rgba(29, 78, 216, 0.35);
+.vf {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(142, 202, 255, 0.55);
+  backface-visibility: visible;
 }
 
-@keyframes crystalSpin {
+.vf-top    { transform: rotateX(90deg) translateZ(var(--half)); background: rgba(219, 234, 254, 0.85); }
+.vf-bottom { transform: rotateX(-90deg) translateZ(var(--half)); background: rgba(6, 18, 40, 0.9); }
+.vf-front  { transform: translateZ(var(--half)); background: rgba(37, 99, 235, 0.82); }
+.vf-back   { transform: rotateY(180deg) translateZ(var(--half)); background: rgba(13, 39, 82, 0.88); }
+.vf-right  { transform: rotateY(90deg) translateZ(var(--half)); background: rgba(11, 34, 71, 0.88); }
+.vf-left   { transform: rotateY(-90deg) translateZ(var(--half)); background: rgba(59, 130, 246, 0.78); }
+
+.v-sat {
+  --s: 16px;
+  --half: 8px;
+}
+
+.v-1 { transform: translate3d(34px, -28px, 18px); }
+.v-2 { transform: translate3d(-34px, 24px, 20px); }
+.v-3 { transform: translate3d(26px, 30px, -24px); }
+.v-4 { transform: translate3d(-28px, -26px, -22px); }
+
+.voxel-sculpture:hover .v-1,
+.voxel-sculpture.is-exploded .v-1 { transform: translate3d(48px, -40px, 32px) rotateX(45deg); }
+.voxel-sculpture:hover .v-2,
+.voxel-sculpture.is-exploded .v-2 { transform: translate3d(-48px, 36px, 34px) rotateY(45deg); }
+.voxel-sculpture:hover .v-3,
+.voxel-sculpture.is-exploded .v-3 { transform: translate3d(40px, 42px, -36px) rotateZ(45deg); }
+.voxel-sculpture:hover .v-4,
+.voxel-sculpture.is-exploded .v-4 { transform: translate3d(-42px, -38px, -34px) rotateX(-45deg); }
+
+.voxel-sculpture:hover .v-core,
+.voxel-sculpture.is-exploded .v-core {
+  transform: scale3d(1.12, 1.12, 1.12) rotateY(45deg);
+}
+
+.v-mini {
+  --s: 28px;
+  --half: 14px;
+  position: relative;
+  top: auto;
+  left: auto;
+  margin: 0;
+  animation: voxelSpin 16s linear infinite reverse;
+}
+
+.v-mini .vf {
+  border-color: rgba(29, 78, 216, 0.45);
+}
+
+.v-mini .vf-top { background: #ffffff; }
+.v-mini .vf-front { background: #2563eb; }
+.v-mini .vf-left { background: #3b82f6; }
+.v-mini .vf-right { background: #0d2752; }
+.v-mini .vf-back { background: #071429; }
+.v-mini .vf-bottom { background: #050f24; }
+
+@keyframes voxelSpin {
   0% {
-    transform: rotateX(18deg) rotateY(0deg) rotateZ(0deg);
+    transform: rotateX(-24deg) rotateY(0deg);
   }
   100% {
-    transform: rotateX(18deg) rotateY(360deg) rotateZ(360deg);
+    transform: rotateX(-24deg) rotateY(360deg);
   }
 }
 
@@ -1068,7 +1104,8 @@ h2 em,
   html {
     scroll-behavior: auto;
   }
-  .crystal-3d,
+  .voxel-cluster,
+  .v-mini,
   .ticker-track {
     animation: none;
   }
@@ -1088,7 +1125,7 @@ h2 em,
     padding-bottom: 16px;
   }
   .main-nav,
-  .crystal-orbit {
+  .voxel-sculpture {
     display: none;
   }
   .hero {
