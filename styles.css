@@ -1047,6 +1047,13 @@ h2 em,
   letter-spacing: -0.07em;
 }
 
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px 36px;
+}
+
 .contact-email {
   display: inline-flex;
   align-items: center;
@@ -1066,6 +1073,32 @@ h2 em,
   font-size: 24px;
 }
 
+.contact-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.06);
+  font: 500 14px var(--mono);
+  color: var(--ink-light);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-social svg {
+  width: 17px;
+  height: 17px;
+  color: var(--accent-ice);
+}
+
+.contact-social:hover {
+  background: rgba(142, 202, 255, 0.14);
+  border-color: var(--accent-ice);
+  color: var(--accent-ice);
+  transform: translateY(-2px);
+}
+
 /* Footer (60% White surface) */
 .site-footer {
   display: flex;
@@ -1077,6 +1110,12 @@ h2 em,
   background: var(--bg-white);
   font: 10px var(--mono);
   text-transform: uppercase;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
 }
 
 .footer-star {
