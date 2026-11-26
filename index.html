@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=halo-winter-20261126" />
+    <link rel="stylesheet" href="styles.css?v=portfolio-winter-20261126" />
   </head>
   <body>
     <canvas id="snowCanvas" class="snow-canvas" aria-hidden="true"></canvas>
@@ -54,40 +54,46 @@
 
           <h1 data-i18n="heroTitle">Belajar hari ini,<br /><em>membuat esok.</em></h1>
 
-          <p class="hero-lede" data-i18n="heroLede">Halo, saya Abdhi Rezki, siswa <code class="inline-code">SMKN 6</code> Tangerang Selatan. Senang menggambar, bermain game, dan terus mencoba hal baru.</p>
+          <p class="hero-lede" data-i18n="heroLede">Halo, saya Abdhi Rezki, siswa SMK Negeri 6 Tangerang Selatan. Saya senang menggambar, bermain game, dan terus mencoba hal baru.</p>
 
           <div class="hero-actions">
             <a class="button button-white" href="#tentang"><span data-i18n="aboutButton">Kenalan lebih dekat</span></a>
-            <a class="button button-glass" href="#pendidikan"><span class="mono-prompt">$</span> <span data-i18n="educationButton">riwayat-pendidikan</span></a>
+            <a class="button button-glass" href="#pendidikan"><span data-i18n="educationButton">Riwayat pendidikan</span> <span aria-hidden="true">↗</span></a>
           </div>
         </div>
 
-        <div class="terminal-stage reveal reveal-delay" id="heroStage">
+        <div class="showcase-stage reveal reveal-delay" id="heroStage">
           <div class="tilt-card" id="tiltCard">
-            <div class="terminal-window">
+            <div class="portfolio-card">
               <div class="card-glare" aria-hidden="true"></div>
-              <div class="terminal-bar">
-                <div class="terminal-dots" aria-hidden="true">
-                  <span></span><span></span><span></span>
+              <div class="portfolio-portrait-col">
+                <div class="portrait-frame">
+                  <img src="profil%20.png" alt="Potret Abdhi Rezki" data-i18n-alt="heroImageAlt" />
+                  <div class="frost-corner frost-tl" aria-hidden="true"></div>
+                  <div class="frost-corner frost-br" aria-hidden="true"></div>
                 </div>
-                <div class="terminal-title">~/abdhi.rezki — zsh</div>
-                <div class="terminal-tag" data-i18n="terminalTag">PROFIL</div>
               </div>
-              <div class="terminal-body">
-                <div class="terminal-avatar-col">
-                  <div class="avatar-frame">
-                    <img src="profil%20.png" alt="Potret Abdhi Rezki" data-i18n-alt="heroImageAlt" />
-                  </div>
-                  <span class="avatar-caption">SMKN 6 TANGSEL</span>
+              <div class="portfolio-info-col">
+                <div class="portfolio-meta-top">
+                  <span class="portfolio-eyebrow" data-i18n="cardEyebrow">PORTOFOLIO · 01</span>
+                  <span class="portfolio-badge" data-i18n="cardBadge">TERUS BELAJAR</span>
                 </div>
-                <div class="terminal-lines">
-                  <div class="term-cmd"><span class="term-prompt">$</span> <span class="term-typed">whoami --profile</span></div>
-                  <div class="term-out"><span class="term-arrow">→</span> <span data-i18n="termRole">Siswa · SMK Negeri 6 Kota Tangerang Selatan</span></div>
-                  <div class="term-out"><span class="term-arrow">→</span> <span data-i18n="termDraw">Menggambar: semi-realistis, anime, &amp; belajar realistis</span></div>
-                  <div class="term-out"><span class="term-arrow">→</span> <span data-i18n="termPlay">Game: Roblox, Blood Strike, Minecraft · Film: Marvel</span></div>
-                  <div class="term-ok"><span class="term-check">✓</span> <span data-i18n="termReady">Konsisten belajar, satu langkah dalam satu waktu</span></div>
-                  <div class="term-out"><span class="term-arrow">→</span> <span data-i18n="termAdmire">Mengagumi:</span> <span class="term-highlight">Simo Häyhä</span></div>
-                  <div class="term-cmd term-cursor-line"><span class="term-prompt">$</span> <span class="term-cursor" aria-hidden="true"></span></div>
+                <h2 class="portfolio-name">Abdhi Rezki</h2>
+                <p class="portfolio-role" data-i18n="cardRole">Siswa · SMK Negeri 6 Kota Tangerang Selatan</p>
+                <div class="portfolio-tags">
+                  <span data-i18n="tagArt">Menggambar</span>
+                  <span data-i18n="tagGames">Bermain Game</span>
+                  <span data-i18n="tagMovies">Film Marvel</span>
+                </div>
+                <div class="portfolio-highlights">
+                  <div>
+                    <span class="highlight-label" data-i18n="hlFocusLabel">Gaya Gambar</span>
+                    <span class="highlight-value" data-i18n="hlFocusValue">Semi-realistis &amp; anime</span>
+                  </div>
+                  <div>
+                    <span class="highlight-label" data-i18n="hlAdmireLabel">Inspirasi</span>
+                    <span class="highlight-value">Simo Häyhä</span>
+                  </div>
                 </div>
               </div>
             </div>
