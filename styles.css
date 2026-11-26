@@ -341,13 +341,14 @@ h2 em,
 .portfolio-card {
   position: relative;
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 28px;
-  align-items: center;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  align-items: stretch;
   text-align: left;
-  padding: 24px 28px;
+  padding: 0 28px 0 0;
   border-radius: 16px;
-  background: linear-gradient(145deg, rgba(10, 29, 62, 0.88) 0%, rgba(5, 15, 34, 0.94) 100%);
+  background: radial-gradient(circle at 20% 70%, rgba(37, 99, 235, 0.28) 0%, transparent 58%),
+    linear-gradient(145deg, rgba(10, 29, 62, 0.9) 0%, rgba(5, 15, 34, 0.96) 100%);
   border: 1px solid rgba(142, 202, 255, 0.22);
   box-shadow: 0 32px 72px rgba(2, 8, 20, 0.62), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
   overflow: hidden;
@@ -369,55 +370,32 @@ h2 em,
 }
 
 .portfolio-portrait-col {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
   transform: translateZ(24px);
 }
 
-.portrait-frame {
-  position: relative;
-  width: 200px;
-  height: 232px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(142, 202, 255, 0.28);
-  background: #091b3a;
-}
-
-.portrait-frame img {
+.portfolio-portrait-col img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 290px;
+  object-fit: contain;
+  object-position: bottom left;
+  filter: drop-shadow(0 12px 24px rgba(2, 8, 20, 0.55));
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.showcase-stage:hover .portrait-frame img {
+.showcase-stage:hover .portfolio-portrait-col img {
   transform: scale(1.03);
-}
-
-.frost-corner {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: rgba(255, 255, 255, 0.65);
-  border-style: solid;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.frost-tl {
-  top: 10px;
-  left: 10px;
-  border-width: 1px 0 0 1px;
-}
-
-.frost-br {
-  bottom: 10px;
-  right: 10px;
-  border-width: 0 1px 1px 0;
 }
 
 .portfolio-info-col {
   position: relative;
   z-index: 2;
+  padding: 26px 0;
 }
 
 .portfolio-meta-top {
@@ -1179,12 +1157,23 @@ h2 em,
   }
   .portfolio-card {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px;
+    gap: 0;
+    padding: 0;
   }
-  .portrait-frame {
+  .portfolio-portrait-col {
+    justify-content: center;
+    padding-top: 14px;
+    border-bottom: 1px solid rgba(142, 202, 255, 0.12);
+  }
+  .portfolio-portrait-col img {
     width: 100%;
-    height: 240px;
+    max-width: 260px;
+    height: auto;
+    max-height: none;
+    object-position: bottom center;
+  }
+  .portfolio-info-col {
+    padding: 20px;
   }
   .portfolio-highlights {
     grid-template-columns: 1fr;
