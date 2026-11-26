@@ -1,78 +1,134 @@
 const year = document.querySelector('#year');
 year.textContent = new Date().getFullYear();
 
-const snowIconSvg = '<svg class="snow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M4.93 6l14.14 12M19.07 6L4.93 18M9.5 4.5L12 7l2.5-2.5M9.5 19.5L12 17l2.5 2.5M4.5 9.5L7 12l-2.5 2.5M19.5 9.5L17 12l2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>';
-
 const translations = {
   id: {
     pageTitle: 'Abdhi Rezki — Personal Site',
-    pageDescription: 'Profil Abdhi Rezki, siswa SMK 6 Tangerang Selatan.',
-    navAbout: 'Tentang', navJourney: 'Pengalaman', navContact: 'Kontak', switchLabel: 'EN',
-    languageLabel: 'Ganti bahasa ke Inggris', brandLabel: 'Kembali ke atas',
-    navigationLabel: 'Navigasi utama', focusLabel: 'Fokus: menggambar, bermain, menonton, belajar',
-    sayHello: 'Sapa saya', imageLabel: 'TERUS INGIN TAHU / 01',
-    noteTop: `${snowIconSvg} terbuka pada ide`, schoolLabel: 'SMK 6<br />TANGSEL',
-    tickerDraw: 'GAMBAR', tickerPlay: 'MAIN', tickerWatch: 'TONTON', tickerLearn: 'BELAJAR',
-    heroEyebrow: 'Siswa · Tangerang Selatan',
+    pageDescription: 'Profil Abdhi Rezki, siswa SMK Negeri 6 Tangerang Selatan.',
+    navAbout: 'Tentang',
+    navEducation: 'Pendidikan',
+    navJourney: 'Pengalaman',
+    navContact: 'Kontak',
+    switchLabel: 'EN',
+    languageLabel: 'Ganti bahasa ke Inggris',
+    brandLabel: 'Kembali ke atas',
+    navigationLabel: 'Navigasi utama',
+    focusLabel: 'Fokus: menggambar, bermain, menonton, belajar',
+    sayHello: 'Sapa saya',
+    pillBadge: 'SMKN 6',
+    pillText: 'Tangerang Selatan · Lihat perjalanan sekolah',
     heroTitle: 'Belajar hari ini,<br /><em>membuat esok.</em>',
-    heroLede: 'Halo, saya Abdhi Rezki, siswa SMK Negeri 6 Tangerang Selatan. Saya senang menggambar, bermain game, dan terus mencoba hal baru.',
-    aboutButton: 'Kenalan lebih dekat', journeyButton: 'Lihat pengalaman',
+    heroLede: 'Halo, saya Abdhi Rezki, siswa <code class="inline-code">SMKN 6</code> Tangerang Selatan. Senang menggambar, bermain game, dan terus mencoba hal baru.',
+    aboutButton: 'Kenalan lebih dekat',
+    educationButton: 'riwayat-pendidikan',
+    terminalTag: 'PROFIL',
     heroImageAlt: 'Potret Abdhi Rezki',
-    heroStamp: 'Bikin<br /><strong>penasaran</strong>', profileIndex: '01 / PROFIL',
+    termRole: 'Siswa · SMK Negeri 6 Kota Tangerang Selatan',
+    termDraw: 'Menggambar: semi-realistis, anime, &amp; belajar realistis',
+    termPlay: 'Game: Roblox, Blood Strike, Minecraft · Film: Marvel',
+    termReady: 'Konsisten belajar, satu langkah dalam satu waktu',
+    termAdmire: 'Mengagumi:',
+    tickerDraw: 'GAMBAR',
+    tickerPlay: 'MAIN',
+    tickerWatch: 'TONTON',
+    tickerLearn: 'BELAJAR',
+    profileIndex: '01 / PROFIL',
     profileTitle: 'Tidak harus<br /><span>langsung jago.</span>',
     profileLead: 'Yang penting mau mulai, mau bertanya, dan mau mengulang sampai jadi lebih baik.',
     profileBody: 'Saya siswa SMK Negeri 6 Tangerang Selatan yang menikmati proses belajar dan mencoba hal-hal baru, satu langkah dalam satu waktu.',
     hobbiesTitle: 'Hobi',
     hobbyArt: 'Menggambar: semi-realistis dan anime; masih belajar gaya realistis.',
-    hobbyGames: 'Bermain Roblox, Blood Strike, dan Minecraft.', hobbyMovies: 'Menonton film Marvel.',
-    admiredTitle: 'Orang yang dikagumi', admiredBody: 'Simo Häyhä, pahlawan nasional Finlandia.',
-    factLearning: 'Terus<br />belajar', factLocation: 'Di<br />Tangsel', factCreator: 'Calon<br />kreator',
-    experienceIndex: '02 / PENGALAMAN',
+    hobbyGames: 'Bermain Roblox, Blood Strike, dan Minecraft.',
+    hobbyMovies: 'Menonton film Marvel.',
+    admiredTitle: 'Orang yang dikagumi',
+    admiredBody: 'Simo Häyhä, pahlawan nasional Finlandia.',
+    factLearning: 'Terus<br />belajar',
+    factLocation: 'Di<br />Tangsel',
+    factCreator: 'Calon<br />kreator',
+    educationIndex: '02 / PENDIDIKAN',
+    educationTitle: 'Jejak<br /><span>pendidikan.</span>',
+    educationIntro: 'Perjalanan sekolah dari timur hingga Tangerang Selatan yang membentuk langkah saya hingga hari ini.',
+    eduLevelSD: 'Sekolah Dasar',
+    eduLevelSMP: 'Sekolah Menengah Pertama',
+    eduLevelSMK: 'Sekolah Menengah Kejuruan · Sekarang',
+    experienceIndex: '03 / PENGALAMAN',
     experienceTitle: 'Proses yang<br /><span>membentuk saya.</span>',
     experienceIntro: 'Pengalaman yang saya jalani sambil terus belajar dan berkembang.',
     experienceCadetTitle: 'Ketarunaan di SMK Negeri 6',
     experienceCadetBody: 'Menjalani pengalaman ketarunaan sebagai bagian dari kehidupan sekolah.',
     experienceArtTitle: 'Mencoba gaya realistis',
     experienceArtBody: 'Pertama kali mencoba menggambar dengan gaya realistis selama satu minggu.',
-    motto: 'Konsisten<br /><em>di satu waktu.</em>', mottoCaption: 'motto hidup',
-    contactIndex: '03 / KONTAK', contactEyebrow: 'Punya ide atau ingin menyapa?',
+    motto: 'Konsisten<br /><em>di satu waktu.</em>',
+    mottoCaption: 'motto hidup',
+    contactIndex: '04 / KONTAK',
+    contactEyebrow: 'Punya ide atau ingin menyapa?',
     contactTitle: 'Mari buat<br /><em>sesuatu yang baik.</em>',
-    footerMade: 'Dibuat dengan rasa ingin tahu <span class="footer-star">❄</span>', backToTop: 'Kembali ke atas ↑'
+    footerMade: 'Dibuat dengan rasa ingin tahu <span class="footer-star">❄</span>',
+    backToTop: 'Kembali ke atas ↑'
   },
   en: {
     pageTitle: 'Abdhi Rezki — Personal Site',
-    pageDescription: 'The personal profile of Abdhi Rezki, a student at SMK 6 South Tangerang.',
-    navAbout: 'About', navJourney: 'Experience', navContact: 'Contact', switchLabel: 'ID',
-    languageLabel: 'Switch language to Indonesian', brandLabel: 'Back to top',
-    navigationLabel: 'Main navigation', focusLabel: 'Focus: drawing, gaming, films, and learning',
-    sayHello: 'Say hello', imageLabel: 'STAY CURIOUS / 01',
-    noteTop: `${snowIconSvg} open to ideas`, schoolLabel: 'SMK 6<br />SOUTH TANGERANG',
-    tickerDraw: 'DRAW', tickerPlay: 'PLAY', tickerWatch: 'WATCH', tickerLearn: 'LEARN',
-    heroEyebrow: 'Student · South Tangerang',
+    pageDescription: 'The personal profile of Abdhi Rezki, a student at SMK Negeri 6 South Tangerang.',
+    navAbout: 'About',
+    navEducation: 'Education',
+    navJourney: 'Experience',
+    navContact: 'Contact',
+    switchLabel: 'ID',
+    languageLabel: 'Switch language to Indonesian',
+    brandLabel: 'Back to top',
+    navigationLabel: 'Main navigation',
+    focusLabel: 'Focus: drawing, gaming, films, and learning',
+    sayHello: 'Say hello',
+    pillBadge: 'SMKN 6',
+    pillText: 'South Tangerang · View school timeline',
     heroTitle: 'Learning today,<br /><em>shaping tomorrow.</em>',
-    heroLede: "Hi, I'm Abdhi Rezki, a student at SMK Negeri 6 South Tangerang. I enjoy drawing, gaming, and trying new things.",
-    aboutButton: 'Get to know me', journeyButton: 'See my experience',
+    heroLede: "Hi, I'm Abdhi Rezki, a student at <code class=\"inline-code\">SMKN 6</code> South Tangerang. I enjoy drawing, gaming, and trying new things.",
+    aboutButton: 'Get to know me',
+    educationButton: 'education-timeline',
+    terminalTag: 'PROFILE',
     heroImageAlt: 'Portrait of Abdhi Rezki',
-    heroStamp: 'Stay<br /><strong>curious</strong>', profileIndex: '01 / ABOUT',
+    termRole: 'Student · SMK Negeri 6 South Tangerang',
+    termDraw: 'Drawing: semi-realistic, anime, &amp; learning realism',
+    termPlay: 'Games: Roblox, Blood Strike, Minecraft · Films: Marvel',
+    termReady: 'Consistent progress, one step at a time',
+    termAdmire: 'Admired figure:',
+    tickerDraw: 'DRAW',
+    tickerPlay: 'PLAY',
+    tickerWatch: 'WATCH',
+    tickerLearn: 'LEARN',
+    profileIndex: '01 / ABOUT',
     profileTitle: "You don't have to be<br /><span>great right away.</span>",
     profileLead: 'What matters is starting, asking questions, and practicing until you get better.',
     profileBody: 'I am a student at SMK Negeri 6 South Tangerang who enjoys learning and trying new things, one step at a time.',
     hobbiesTitle: 'Hobbies',
     hobbyArt: 'Drawing: semi-realistic and anime; still learning realistic art.',
-    hobbyGames: 'Playing Roblox, Blood Strike, and Minecraft.', hobbyMovies: 'Watching Marvel movies.',
-    admiredTitle: 'Someone I admire', admiredBody: 'Simo Häyhä, a Finnish national hero.',
-    factLearning: 'Always<br />learning', factLocation: 'Based in<br />Tangsel', factCreator: 'Future<br />creator',
-    experienceIndex: '02 / EXPERIENCE',
+    hobbyGames: 'Playing Roblox, Blood Strike, and Minecraft.',
+    hobbyMovies: 'Watching Marvel movies.',
+    admiredTitle: 'Someone I admire',
+    admiredBody: 'Simo Häyhä, a Finnish national hero.',
+    factLearning: 'Always<br />learning',
+    factLocation: 'Based in<br />Tangsel',
+    factCreator: 'Future<br />creator',
+    educationIndex: '02 / EDUCATION',
+    educationTitle: 'Education<br /><span>timeline.</span>',
+    educationIntro: 'My school journey across Indonesia leading up to South Tangerang today.',
+    eduLevelSD: 'Elementary School',
+    eduLevelSMP: 'Junior High School',
+    eduLevelSMK: 'Vocational High School · Present',
+    experienceIndex: '03 / EXPERIENCE',
     experienceTitle: 'Experiences that<br /><span>shape me.</span>',
     experienceIntro: 'Some experiences from my ongoing journey of learning and growing.',
     experienceCadetTitle: 'Cadet training at SMK Negeri 6',
     experienceCadetBody: 'Taking part in cadet training as a part of school life.',
     experienceArtTitle: 'Trying realistic art',
     experienceArtBody: 'My first attempt at drawing in a realistic style, practiced for a week.',
-    motto: 'Stay consistent,<br /><em>one moment at a time.</em>', mottoCaption: 'my life motto',
-    contactIndex: '03 / CONTACT', contactEyebrow: 'Have an idea or just want to say hello?',
+    motto: 'Stay consistent,<br /><em>one moment at a time.</em>',
+    mottoCaption: 'my life motto',
+    contactIndex: '04 / CONTACT',
+    contactEyebrow: 'Have an idea or just want to say hello?',
     contactTitle: "Let's make<br /><em>something good.</em>",
-    footerMade: 'Made with curiosity <span class="footer-star">❄</span>', backToTop: 'Back to top ↑'
+    footerMade: 'Made with curiosity <span class="footer-star">❄</span>',
+    backToTop: 'Back to top ↑'
   }
 };
 
@@ -117,7 +173,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
-// 3D Interactive Portrait Tilt with Idle Float
+// 3D Interactive Terminal Card Tilt with Subtle Idle Float
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const heroStage = document.querySelector('#heroStage');
 const tiltCard = document.querySelector('#tiltCard');
@@ -133,8 +189,8 @@ if (heroStage && tiltCard && !prefersReducedMotion) {
     const rect = heroStage.getBoundingClientRect();
     const normX = (event.clientX - rect.left) / rect.width - 0.5;
     const normY = (event.clientY - rect.top) / rect.height - 0.5;
-    targetY = normX * 16;
-    targetX = -normY * 14;
+    targetY = normX * 10;
+    targetX = -normY * 9;
     isHovering = true;
 
     tiltCard.style.setProperty('--glare-x', `${(normX + 0.5) * 100}%`);
@@ -147,8 +203,8 @@ if (heroStage && tiltCard && !prefersReducedMotion) {
 
   function animateTilt(time) {
     if (!isHovering) {
-      targetX = Math.sin(time * 0.0011) * 3.2;
-      targetY = Math.cos(time * 0.00085) * 4.2;
+      targetX = Math.sin(time * 0.001) * 1.8;
+      targetY = Math.cos(time * 0.0008) * 2.2;
     }
     currentX += (targetX - currentX) * 0.08;
     currentY += (targetY - currentY) * 0.08;
